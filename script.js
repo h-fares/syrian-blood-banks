@@ -8,7 +8,7 @@
     // property by default. See API docs for 'joinBy' for more info on linking
     // data and map.
     const data = [
-        ['sy-di', 10], ['sy-hl', 11], ['sy-hm', 12], ['sy-hi', 13],
+        ['sy-di', 'ffff'], ['sy-hl', 11], ['sy-hm', 12], ['sy-hi', 13],
         ['sy-id', 14], ['sy-ha', 15], ['sy-dy', 16], ['sy-su', 17],
         ['sy-rd', 18], ['sy-qu', 19], ['sy-dr', 20], ['sy-3686', 21],
         ['sy-la', 22], ['sy-ta', 23], ['sy-ra', 24]
@@ -17,11 +17,16 @@
     // Create the chart
     Highcharts.mapChart('container', {
         chart: {
-            map: topology
+            map: topology,
+            backgroundColor: "#222"
         },
 
         title: {
-            text: 'Highcharts Maps basic demo'
+            text: "Syrian Blood Banks",
+            style: {
+                color: "#ff4c4c",
+                fontSize: "22px"
+            }
         },
 
         subtitle: {
@@ -30,9 +35,7 @@
 
         mapNavigation: {
             enabled: true,
-            buttonOptions: {
-                verticalAlign: 'bottom'
-            }
+            enableDoubleClickZoomTo: true
         },
 
         colorAxis: {
@@ -41,12 +44,14 @@
 
         series: [{
             data: data,
-            name: 'Random data',
+            name: "Blood Banks",
+            joinBy: "hc-key",
             states: {
                 hover: {
-                    color: '#BADA55'
+                    color: '#ff4c4c'
                 }
             },
+            borderColor: "#fff",
             dataLabels: {
                 enabled: true,
                 format: '{point.name}'
